@@ -80,9 +80,9 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Sidebar Name"
-  avatar           : "profile.png"
-  bio              : "Your biography for the left-hand sidebar"
+  name             : "Nicolas Courty"
+  avatar           : "logo.png"
+  bio              : "Professor in Computer Science"
   location         : "Location"
   employer         :
   pubmed           : 
