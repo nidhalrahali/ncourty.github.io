@@ -23,24 +23,25 @@ import string
 import html
 import os
 import re
+import chardet
 
 #todo: incorporate different collection types rather than a catch all publications, requires other changes to template
 publist = {
     "proceeding": {
-        "file" : "proceedings.bib",
+        "file" : "bib/confs-utf8.bib",
         "venuekey": "booktitle",
         "venue-pretext": "In the proceedings of ",
         "collection" : {"name":"publications",
                         "permalink":"/publication/"}
         
     },
-    "journal":{
-        "file": "pubs.bib",
-        "venuekey" : "journal",
-        "venue-pretext" : "",
-        "collection" : {"name":"publications",
-                        "permalink":"/publication/"}
-    } 
+    # "journal":{
+    #     "file": "bib/journals.bib",
+    #     "venuekey" : "journal",
+    #     "venue-pretext" : "",
+    #     "collection" : {"name":"publications",
+    #                     "permalink":"/publication/"}
+    # } 
 }
 
 html_escape_table = {
@@ -55,6 +56,8 @@ def html_escape(text):
 
 
 for pubsource in publist:
+
+    print(chardet.detect(open(publist[pubsource]["file"], 'rb').read())['encoding'])
     parser = bibtex.Parser()
     bibdata = parser.parse_file(publist[pubsource]["file"])
 
